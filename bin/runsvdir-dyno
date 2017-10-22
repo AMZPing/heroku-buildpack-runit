@@ -3,7 +3,7 @@
 set -e
 
 PS_TYPE=$(echo "$DYNO" | cut -d. -f1)
-PS_PROCFILE="Procfile.$PS_TYPE"
+PS_PROCFILE="ProcfileStaging.$PS_TYPE"
 
 if [ ! -f "$PS_PROCFILE" ]; then
   echo "$PS_PROCFILE does not exist." >&2
