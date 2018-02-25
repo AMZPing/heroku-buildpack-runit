@@ -5,7 +5,7 @@ set -e
 PS_TYPE=$(echo "$DYNO" | cut -d. -f1)
 PS_FULL_NAME=$(echo "${DYNO//./}")
 
-if [ $APP_ENV = 'production' ]
+if [ "$APP_ENV" = 'production' ]
 then
     PS_PROCFILE="Procfile.$PS_FULL_NAME"
 else
