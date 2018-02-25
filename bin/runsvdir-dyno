@@ -7,13 +7,9 @@ PS_FULL_NAME=$(echo "${DYNO//./}")
 
 if [ $APP_ENV = 'production' ]
 then
-    PS_PROCFILE=$PS_FULL_NAME.$PS_TYPE
-    echo "PRODUCTION."
-    exit 1
+    PS_PROCFILE="Procfile.$PS_FULL_NAME"
 else
     PS_PROCFILE="ProcfileStaging.$PS_TYPE"
-    echo "NOT PRODUCTION."
-    exit 1
 fi
 
 if [ ! -f "$PS_PROCFILE" ]; then
