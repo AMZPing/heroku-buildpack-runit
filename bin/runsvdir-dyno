@@ -6,9 +6,9 @@ PS_TYPE=$(echo "$DYNO" | cut -d. -f1)
 
 if [ "$APP_ENV" = "production" ]
 then
-    PS_PROCFILE="Procfile.$PS_FULL_NAME"
+    PS_PROCFILE="Procfile.$DYNO"
 else
-    PS_PROCFILE="ProcfileStaging.$DYNO"
+    PS_PROCFILE="ProcfileStaging.$PS_TYPE"
 fi
 
 if [ ! -f "$PS_PROCFILE" ]; then
