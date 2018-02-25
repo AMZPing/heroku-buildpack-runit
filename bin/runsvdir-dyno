@@ -3,7 +3,14 @@
 set -e
 
 PS_TYPE=$(echo "$DYNO" | cut -d. -f1)
-PS_PROCFILE="ProcfileStaging.$PS_TYPE"
+PS_FULL_NAME=$(echo "${DYNO//./}")
+
+if [ $APP_ENV == 'production' ]
+then
+    PS_PROCFILE=$PS_FULL_NAME.$PS_TYPE
+else
+    PS_PROCFILE="ProcfileStaging.$PS_TYPE"
+fi
 
 if [ ! -f "$PS_PROCFILE" ]; then
   echo "$PS_PROCFILE does not exist." >&2
